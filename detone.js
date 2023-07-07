@@ -75,8 +75,9 @@ function unhighlight(cell)
 
 function unhighlightAll(row)
 {
-	for (j = 0; j < row.cells.length-1; j++)
+	for (j = 0; j < row.cells.length; j++)
 	{
+		if (j == 4) {continue;}
 		//console.log(`j = ${j} , ${row.cells[j].textContent}`);
 		unhighlight(row.cells[j]);
 		//row.cells[j].getElementsByTagName('span').remove();
