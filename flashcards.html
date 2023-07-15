@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<h1 id ="header" align = "center"> Flash Cards </h1>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+</style>
+<body>
+	<script src="mywords.js" charset="utf-8"></script>
+	<script src="generate_table.js"></script>
+	<script src="flashcards.js" charset="utf-8"></script>
+	<script src="gamemanager.js" charset="utf-8"></script>
+	
+	<p id ="remembered">404</p>
+	<p id = "clearReview"></p>
+	
+	<label id = "menu">
+	
+	<!-- <p align = "center" style="font-size:1.5em";> <b>Choose Batch</b> </p> -->
+	
+	<p align = "center"> Cards per batch: </p>
+	
+	<p align = "center"><input id ="cardsPerBatch" type="number" min=1 max =99 style="text-align: center;"> </input></p>
+	
+	<p align = "center"> Batch number: </p>
+	
+	<p align = "center"><input id ="batchNumber" type="number" min=1 max =99 style="text-align: center;">  </input></p>
+	
+	<p align = "center"><input id ="random?" type="checkbox" style="text-align: center;"> Random selection </input></p>
+	<p align = "center"><input id ="voiceFirst?" type="checkbox" style="text-align: center;"> Play sound before word </input></p>
+	
+	<p id = "badInput" align = "center" style="color: red;"></p>
+	
+	<p align = "center" ><button onclick = "start()">Start!</button> <button onclick = "clearAll()">Clear</button> </p>
+	
+	</label>
+	<script>
+	
+	document.getElementById("remembered").style.display = "none";
+	
+	var game;
+	
+	function start()
+	{
+		var cardsPerBatch = document.getElementById("cardsPerBatch").value;
+		var batchNumber = document.getElementById("batchNumber").value;
+				
+		var voiceFirst = document.getElementById("voiceFirst?").checked;
+		var randSelect = document.getElementById("random?").checked;
+		
+		
+		if  (cardsPerBatch < 1 ||  (batchNumber < 1 && !randSelect))
+		{
+			document.getElementById("badInput").innerHTML = "Invalid input!";
+			return;
+		}
+		
+		var  unkownWords =  unKnown(mywords);
+		
+		if (cardsPerBatch > unkownWords)
+		{
+			document.getElementById("badInput").innerHTML =  `There are only ${unkownWords} unkown words, ${cardsPerBatch} > ${unkownWords}`;
+			return;
+		}
+		
+		else if ((batchNumber)*cardsPerBatch > unkownWords && !randSelect)
+		{
+			var lastBatchNum =  Math.floor(unkownWords/cardsPerBatch) ;
+			document.getElementById("badInput").innerHTML = `There are only ${unkownWords} unkown words, the  last batch is ${lastBatchNum} < ${batchNumber}`;
+			return;
+		}
+		
+		document.getElementById("badInput").innerHTML ="";
+		
+		document.getElementById("menu").style.display = "none";
+
+		var gameManager = new GameManager(mywords,wordsPerBatch = cardsPerBatch);
+		game  = gameManager.startGame(batchNumber-1,voiceFirst, randomSelection= randSelect);
+		
+		//document.getElementById("badInput").innerHTML = `cardsPerBatch = ${cardsPerBatch} , batchNumber = ${batchNumber}`;
+	}
+	
+	function clearAll()
+	{
+		document.getElementById("cardsPerBatch").value = "";
+		document.getElementById("batchNumber").value = "";
+		document.getElementById("random?").checked = false;
+		document.getElementById("voiceFirst?").checked = false;
+	}
+	
+	function unKnown(myWordsDic)
+	{
+		var unkown = 0;
+		
+		for (var i = 0; i < myWordsDic.length; i++)
+		{
+			if (!myWordsDic[i]["known"]){ unkown++; }
+		}
+		
+		return unkown;
+	}
+	
+	</script>
+	
+
+</body>
+</html>

@@ -1,4 +1,7 @@
-function generateTable(rows,cols) {
+function generateTable(rows,cols,colWidth = [],anotherRow = true) 
+{
+  
+	
   // creates a <table> element and a <tbody> element
   const tbl = document.createElement("table");
   const tblBody = document.createElement("tbody");
@@ -16,13 +19,17 @@ function generateTable(rows,cols) {
       const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
 	  cell.align ="center";
       cell.appendChild(cellText);
+	  if (colWidth.length == cols)
+	  {
+		cell.style.width = colWidth[j];
+	  }
       row.appendChild(cell);
     }
 
     // add the row to the end of the table body
 
 	tblBody.appendChild(row);
-	if (i !=0)
+	if (i !=0 && anotherRow)
 	{
 		tblBody.appendChild(emptyRow(cols));
 	}
