@@ -1,28 +1,30 @@
 <html>
 
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1" /> 
 <h1 id ="header" align = "center"> Flash Cards </h1>
 </head>
 <style>
-@media only screen and (max-width: 480px) {
-    /* horizontal scrollbar for tables if mobile screen */
-    .tablemobile {
-        overflow-x: auto;
-        display: block;
-    }
+
+table{
+    /* Set the table width, can be a percentage or size */
+    width: device-width;
+	initial-scale=1;
+    
+    /* If no widths are present on the first row, the column widths are divided equally across the table */
+    table-layout: fixed;
 }
-* {
-  box-sizing: border-box;
+
+td{
+  /* Cell border */
+  border: 1px solid black;
+  
+  /* Hide anything in the row that overflows the cell otherwise content could cross cell borders */
+  overflow-wrap: anywhere;
 }
-table { 
-    table-layout:fixed;
-}
-td { 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    word-wrap: break-word;
-}
+
+
 
 </style>
 <body>

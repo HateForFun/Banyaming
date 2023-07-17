@@ -18,14 +18,18 @@ class FlashCard
 	
 	createTable()
 	{
-		const width = ['200px','200px','200px','','80px'];  
+		//const width = ['200px','200px','200px','','80px'];  
+		
+		const width = ['25%','25%','','','10%'];
+		
+		//const width = [];
 		
 		this.tbl = generateTable(2,5,width);
 		
 		this.tbl.rows[0].cells[0].innerHTML = "<b>Word</b>";
 		this.tbl.rows[0].cells[1].innerHTML = "<b>Simplified</b>";
 		this.tbl.rows[0].cells[2].innerHTML = "<b>Pinyin</b>";
-		this.tbl.rows[0].cells[3].innerHTML = "<b>Translation</b>";
+		this.tbl.rows[0].cells[3].innerHTML = "<b>Meaning</b>";
 		this.tbl.rows[0].cells[4].innerHTML = "<b>Sound</b>";
 		
 		this.tbl.rows[1].cells[0].innerHTML = this.word;
@@ -73,7 +77,7 @@ class FlashCard
 	function addPlayButton(cell,index)
 	{
 		let but = document.createElement('button');
-		but.innerText = 'Play Sound';
+		but.innerText = '►';
 		
 		var funcString =`playSound(${index})`;
 		
