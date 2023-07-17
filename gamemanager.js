@@ -119,6 +119,7 @@ class Game
 	start()
 	{
 		document.getElementById("remembered").style.display = "";
+		document.getElementById("refresh").style.display = "";
 		
 		addButton(this.tbl.rows[1].cells[0],`showNextFlashcard()`,"Start");
 		this.tbl.rows[1].cells[0].innerHTML += "&nbsp;";
@@ -236,6 +237,7 @@ class Game
 		}
 		addButton(document.getElementById("clearReview"),`clearReview()`,"Clear");
 	}
+	
 	
 	clearReview()
 	{

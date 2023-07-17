@@ -33,6 +33,7 @@ td{
 	<script src="flashcards.js" charset="utf-8"></script>
 	<script src="gamemanager.js" charset="utf-8"></script>
 	
+	<button id = "refresh" onclick="location.reload()" style = "float: right;">Restart</button>
 	<p id ="remembered">404</p>
 	<p id = "clearReview"></p>
 	
@@ -59,6 +60,7 @@ td{
 	<script>
 	
 	document.getElementById("remembered").style.display = "none";
+	document.getElementById("refresh").style.display = "none";
 	
 	var game;
 	
