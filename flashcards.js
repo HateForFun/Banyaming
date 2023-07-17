@@ -20,7 +20,7 @@ class FlashCard
 	{
 		//const width = ['200px','200px','200px','','80px'];  
 		
-		const width = ['25%','25%','','','10%'];
+		const width = ['20%','20%','','','10%'];
 		
 		//const width = [];
 		
