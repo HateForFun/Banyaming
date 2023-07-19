@@ -24,6 +24,16 @@ td{
   overflow-wrap: anywhere;
 }
 
+#refresh {
+  background-color: #FCBF50; /* Green */
+  border: 1px solid-black;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+}
 
 
 </style>
@@ -33,7 +43,7 @@ td{
 	<script src="flashcards.js" charset="utf-8"></script>
 	<script src="gamemanager.js" charset="utf-8"></script>
 	
-	<button id = "refresh" onclick="location.reload(false)" style = "float: right;">Restart</button>
+	<button id = "refresh" onclick="game.restart()" style = "float: right;">Restart</button>
 	<p id ="remembered">404</p>
 	<p id = "clearReview"></p>
 	

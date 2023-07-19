@@ -74,7 +74,7 @@ class FlashCard
 		audio.play();
 	}
 	
-	function addPlayButton(cell,index)
+	function addPlayButton(cell,index, big = false)
 	{
 		let but = document.createElement('button');
 		but.innerText = '►';
@@ -82,6 +82,20 @@ class FlashCard
 		var funcString =`playSound(${index})`;
 		
 		but.setAttribute('onclick', funcString);
+		
+		if (big)
+		{
+			but.style  =  " background-color: #9999ff;   \
+						border: 2px solid  black;\
+						color: white;\
+						padding: 15px 32px;\
+						text-align: center;\
+						text-decoration: none;\
+						display: inline-block;\
+						font-size: 16px;";
+			but.innerText = "Play Sound";
+		}
+		
 		cell.appendChild(but);
 	}
 	
@@ -94,7 +108,16 @@ class FlashCard
 		
 		but.setAttribute('onclick', funcString);
 		
-		but.style =  "padding: 0px";
+		//but.style =  "padding: 0px";
+		
+		but.style  =  " background-color: #00a3cc; /* Facbook  Blue */  \
+						border: 2px solid  black;\
+						color: white;\
+						padding: 15px 32px;\
+						text-align: center;\
+						text-decoration: none;\
+						display: inline-block;\
+						font-size: 16px;";
 		
 		cell.appendChild(but);
 	}

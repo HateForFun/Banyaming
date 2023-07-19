@@ -144,7 +144,7 @@ class Game
 		
 		else  
 		{
-			this.tbl.rows[0].cells[0].innerHTML = this.flashcards[idx]["word"];
+			this.tbl.rows[0].cells[0].innerHTML = "<label  style='font-size:20px'>" + this.flashcards[idx]["word"]+ "</label>";
 		}
 		addButton(this.tbl.rows[1].cells[0],`showFlashCard(${idx})`,"Show Answer");
 		
@@ -157,10 +157,12 @@ class Game
 		{
 			var realIdx = this.flashcards[index].index;
 			playSound(realIdx);
-			addPlayButton(this.tbl.rows[2].cells[0],realIdx);
+			addPlayButton(this.tbl.rows[2].cells[0],realIdx,true);
 		}
 		
-		this.tbl.rows[0].cells[0].innerHTML = this.flashcards[index]["word"];
+		this.tbl.rows[0].cells[0].innerHTML = "<label  style='font-size:20px'>" + this.flashcards[index]["word"]+"</label>";
+		
+		this.tbl.rows[0].cells[0].innerHTML += "<br>" + this.flashcards[index]["simplified"];
 		
 		this.tbl.rows[0].cells[0].innerHTML += "<br>" + this.flashcards[index]["pinyin"];
 		
@@ -256,6 +258,17 @@ class Game
 	hide()
 	{
 		this.tbl.style.display = "none";
+	}
+	
+	restart()
+	{
+		this.rememberedCnt = 0;
+		document.getElementById("remembered").innerHTML = `${this.rememberedCnt}/${this.flashcards.length}`;
+		this.remembered = Array(this.flashcards.length).fill(false);
+		this.clearTable();
+		this.start();
+
+		
 	}
 	
 	gameEnded()
