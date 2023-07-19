@@ -237,7 +237,7 @@ class Game
 			if (i == localMinIndex) {continue;}
 			this.flashcards[i].show(false);
 		}
-		addButton(document.getElementById("clearReview"),`clearReview()`,"Clear");
+		addButton(document.getElementById("clearReview"),`clearReview()`,"Hide Review");
 	}
 	
 	
