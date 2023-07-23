@@ -46,6 +46,13 @@ table{
     /* If no widths are present on the first row, the column widths are divided equally across the table */
     table-layout: fixed;
 }
+td{
+  /* Cell border */
+  border: 1px solid black;
+  
+  /* Hide anything in the row that overflows the cell otherwise content could cross cell borders */
+  overflow-wrap: anywhere;
+}
 </style>
 <body>
 	<script src="mywords.js" charset="utf-8"></script>
