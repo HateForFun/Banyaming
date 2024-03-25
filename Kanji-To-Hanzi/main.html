@@ -42,6 +42,55 @@ textarea {
   display: inline-block;
   font-size: 20px;
 }
+#copy
+{
+  background-color: #CCBF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 <body>
 	<script src="dic.js" charset="utf-8"></script>
@@ -52,6 +101,11 @@ textarea {
 	Converted Text: <br><br>
 	<textarea id="result" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea><br><br>
 	<button onclick = "convert()" id ="convert">Convert</button>&emsp;&emsp;<button onclick = "clearAll()" id ="clearall">Clear All</button><br><br>
+	<div class="tooltip">
+		<button id = "copy" onclick="copyResultToClipboard()" onmouseout="hover()">
+		<span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Copy Converted Text</button>
+	</div>
+	<br><br>
 	<p align = "center"><input id ="kanji to hanzi?" type="checkbox" style="text-align: center;" > Kanji to Hanzi </input></p>
 	<script>
 	
@@ -107,6 +161,28 @@ textarea {
 		document.getElementById("result").value = "";
 	}
 	
+	function copyResultToClipboard() 
+	{
+	  // Get the text field
+	  var copyText = document.getElementById("result");
+
+	   // Copy the text inside the text field
+	  navigator.clipboard.writeText(copyText.value);
+	  
+	  if (copyText.value.length <= 18)
+	  {
+		document.getElementById("myTooltip").innerHTML = "Copied " + copyText.value; 
+	  }
+	  else
+	  {
+		document.getElementById("myTooltip").innerHTML = "Copied!"
+	  }
+	}
+	function hover()
+	{
+		var tooltip = document.getElementById("myTooltip");
+		tooltip.innerHTML = "Copy to clipboard";
+	}
 	</script>
 	
 	
