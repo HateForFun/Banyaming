@@ -2,22 +2,51 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-<title></title>
+<title>Convert Hanzi to Japanese Kanji</title>
 </head>
 <style>
 
 body {
 	text-align: center;
+	font-size:  25px;
+}
+textarea {
+	font-size:  30px;
+}
+#title{
+
+	font-size:  40px;
+	color:      red;
+}
+#convert {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+#clearall {
+  background-color: #FCBF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
 }
 </style>
 <body>
 	<script src="dic.js" charset="utf-8"></script>
 	<script src="dicflipped.js" charset="utf-8"></script>
-	<p style = "text-align: center;" style='font-size:20px'><b>Convert Hanzi to Japanese Kanji</b> <br><br>
+	<p id = "title" style = "text-align: center;" style='font-size:100px'><b>Convert Hanzi to Japanese Kanji</b></p>
 	Text: <br>
-	<textarea id="input" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea> <br><br>
+	<textarea id="input" rows="10" cols="50" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea> <br><br>
 	Converted Text: <br>
-	<textarea id="result" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea><br><br>
+	<textarea id="result" rows="10" cols="50" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea><br><br>
 	<button onclick = "convert()" id ="convert">Convert</button>&emsp;&emsp;<button onclick = "clearAll()" id ="clearall">Clear All</button><br><br>
 	<p align = "center"><input id ="kanji to hanzi?" type="checkbox" style="text-align: center;" > Kanji to Hanzi </input></p>
 	<script>
