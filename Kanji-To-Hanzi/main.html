@@ -11,7 +11,7 @@ body {
 	font-size:  25px;
 }
 textarea {
-	font-size:  32px;
+	font-size: 42px;
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -48,9 +48,9 @@ textarea {
 	<script src="dicflipped.js" charset="utf-8"></script>
 	<p id = "title" style = "text-align: center;" style='font-size:100px'><b>Convert Hanzi to Japanese Kanji</b></p>
 	Text: <br><br>
-	<textarea id="input" rows="10" cols="50" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea> <br><br>
+	<textarea id="input" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea> <br><br>
 	Converted Text: <br><br>
-	<textarea id="result" rows="10" cols="50" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea><br><br>
+	<textarea id="result" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='font-size:20px'></textarea><br><br>
 	<button onclick = "convert()" id ="convert">Convert</button>&emsp;&emsp;<button onclick = "clearAll()" id ="clearall">Clear All</button><br><br>
 	<p align = "center"><input id ="kanji to hanzi?" type="checkbox" style="text-align: center;" > Kanji to Hanzi </input></p>
 	<script>
