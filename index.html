@@ -186,6 +186,7 @@
 	{
 		if (!canPlaySound) {return;}
 		current_word = mywords[audioID]["word"]
+		alert(current_word);
 		url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=" + current_word + "&tl=zh-TW&ttsspeed=0.24"
 		var audio = new Audio(url);
 		canPlaySound = false;
