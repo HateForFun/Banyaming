@@ -38,21 +38,6 @@
 .highlight {
   background-color: yellow;
 }
-table{
-    /* Set the table width, can be a percentage or size */
-    width: device-width;
-	initial-scale=1;
-    
-    /* If no widths are present on the first row, the column widths are divided equally across the table */
-    table-layout: fixed;
-}
-td{
-  /* Cell border */
-  border: 1px solid black;
-  
-  /* Hide anything in the row that overflows the cell otherwise content could cross cell borders */
-  overflow-wrap: anywhere;
-}
 </style>
 <body>
 	<script src="mywords.js" charset="utf-8"></script>
@@ -67,6 +52,8 @@ td{
 	<br>
 	Debug2 = <p id = "debug2" style="display:inline"></p> -->
 	<script>
+	
+	var canPlaySound =  true;
 	
 	myInput.addEventListener("keypress", function(event)
 	{
@@ -187,12 +174,27 @@ td{
 	function addButton(cell,i)
 	{
 		let button = document.createElement('button');
-		button.innerText = 'Play';
+		button.innerText = '►';
 		
-		var funcString =`playSound(${i})`;
+		var funcString =`playSoundOnline(${i})`;
 		
 		button.setAttribute('onclick', funcString);
 		cell.appendChild(button);
+	}
+	
+	function playSoundOnline(audioID)
+	{
+		if (!canPlaySound) {return;}
+		current_word = mywords[audioID]["word"]
+		url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=" + current_word + "&tl=zh-TW&ttsspeed=0.24"
+		var audio = new Audio(url);
+		canPlaySound = false;
+		audio.addEventListener("ended", function() 
+		{
+			canPlaySound = true;
+        
+		});
+		audio.play();
 	}
 	
 	function playSound(audioID)
