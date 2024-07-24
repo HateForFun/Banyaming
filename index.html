@@ -200,8 +200,15 @@
 	
 	function playSound(audioID)
 	{
+		if (!canPlaySound) {return;}
 		var audioFileLoc = "./audio/"+ audioID +".mp3";
 		var audio = new Audio(audioFileLoc);
+		canPlaySound = false;
+		audio.addEventListener("ended", function() 
+		{
+			canPlaySound = true;
+        
+		});
 		audio.play();
 	}
 	
