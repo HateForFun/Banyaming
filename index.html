@@ -187,7 +187,7 @@
 		if (!canPlaySound) {return;}
 		current_word = mywords[audioID]["word"]
 		url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=" + encodeURIComponent(current_word) + "&tl=zh-TW&ttsspeed=0.24"
-		alert(url);
+		alert(encodeURIComponent(current_word));
 		var audio = new Audio(url);
 		canPlaySound = false;
 		audio.addEventListener("ended", function() 
